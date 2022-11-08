@@ -336,10 +336,11 @@ public class ControladorVista implements ActionListener {
 	// ---------------------ASIGNADO_A-----------------------------
 		public void buscarAsignado() {
 			Connection c = ConexionSQL.connection;
-			String cientifico = panelFormularios.buscarTextfield.getText();
+			String cientifico = panelFormularios.buscarTextfield1.getText();
+			String proyecto = panelFormularios.buscarTextfield2.getText();
 			String data = "";
 			try {
-				String query = "SELECT * FROM asignado_a WHERE cientifico=" + cientifico + ";";
+				String query = "SELECT * FROM asignado_a WHERE cientifico=" + cientifico + " AND proyecto= " + proyecto + ";";
 				Statement st = c.createStatement();
 				java.sql.ResultSet resultSet;
 				resultSet = st.executeQuery(query);
@@ -359,8 +360,8 @@ public class ControladorVista implements ActionListener {
 			// INSERT VALUES
 			Connection c = ConexionSQL.connection;
 			try {
-				String cientifico = panelFormularios.crearNombre.getText();
-				String proyecto = panelFormularios.borrarTexfield.getText();
+				String cientifico = panelFormularios.textfield1.getText();
+				String proyecto = panelFormularios.textfield2.getText();
 
 				String query = "INSERT INTO asignado_a (cientifico, proyecto) values" + "('" + cientifico + "','" + proyecto
 						+ "');";
@@ -377,8 +378,8 @@ public class ControladorVista implements ActionListener {
 		public void borrarAsignado() { // DELETE
 			Connection c = ConexionSQL.connection;
 			try {
-				String cientifico = panelFormularios.borrarTexfield.getText();
-
+				String cientifico = panelFormularios.borrarTexfield1.getText();
+				String proyecto = panelFormularios.borrarTexfield2.getText();
 				String query = "DELETE FROM asignado_a " + "WHERE cientifico=" + cientifico + ";";
 				System.out.println(query);
 				Statement st = c.createStatement();
@@ -393,13 +394,13 @@ public class ControladorVista implements ActionListener {
 		public void modificarAsignado() {
 			Connection c = ConexionSQL.connection;
 			try {
-				String cientificoActual = panelFormularios.dniActual.getText();
+				String idActual = panelFormularios.textfield4.getText();
+				String cientificoActual = panelFormularios.textfield5.getText();
+				String nuevoId = panelFormularios.textfield6.getText();
+				String nuevoCientifico = panelFormularios.textfield7.getText();
 
-				String cientifico = panelFormularios.actualizarNombre.getText();
-				String proyecto = panelFormularios.actualizarApellidos.getText();
-
-				String query = "UPDATE asignado_a " + "SET cientifico = " + cientifico + ", proyecto='" + proyecto + "'"
-						+ "WHERE cientifico = " + cientificoActual + ";";
+				String query = "UPDATE asignado_a " + "SET cientifico = '" + nuevoCientifico + "', proyecto='" + nuevoId + "'"
+						+ "WHERE cientifico = '" + cientificoActual + "' AND proyecto='" + idActual + "';";
 				System.out.println(query);
 				Statement st = c.createStatement();
 				st.executeUpdate(query);
