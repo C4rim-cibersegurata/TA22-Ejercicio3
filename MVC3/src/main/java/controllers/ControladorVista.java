@@ -31,7 +31,7 @@ public class ControladorVista implements ActionListener {
 		this.cframe = cframe;
 		this.panelOpciones = panelOpciones;
 		this.panelFormularios = panelFormularios;
-		crudOption = 1;
+		crudOption = 0;
 		agregarEventos();
 	}
 
@@ -80,9 +80,9 @@ public class ControladorVista implements ActionListener {
 
 		} else if (panelOpciones.btnListar == e.getSource()) {
 			conSQL.conectar();
-			if (crudOption == 1) {
+			if (crudOption == 0) {
 				listarCientificos();
-			} else if (crudOption == 2) {
+			} else if (crudOption == 1) {
 				listarProyectos();
 			} else {
 				listarAsignados();
@@ -91,9 +91,9 @@ public class ControladorVista implements ActionListener {
 
 		} else if (panelFormularios.crearButton == e.getSource()) {
 			conSQL.conectar();
-			if (crudOption == 1) {
+			if (crudOption == 0) {
 				crearCientifico();
-			} else if (crudOption == 2) {
+			} else if (crudOption == 1) {
 				crearProyecto();
 			} else {
 				crearAsignado();
@@ -102,9 +102,9 @@ public class ControladorVista implements ActionListener {
 
 		} else if (panelFormularios.borrarButton == e.getSource()) {
 			conSQL.conectar();
-			if (crudOption == 1) {
+			if (crudOption == 0) {
 				borrarCientifico();
-			} else if (crudOption == 2) {
+			} else if (crudOption == 1) {
 				borrarProyecto();
 			} else {
 				borrarAsignado();
@@ -113,9 +113,9 @@ public class ControladorVista implements ActionListener {
 
 		} else if (panelFormularios.buscarButton == e.getSource()) {
 			conSQL.conectar();
-			if (crudOption == 1) {
+			if (crudOption == 0) {
 				buscarCientifico();
-			} else if (crudOption == 2) {
+			} else if (crudOption == 1) {
 				buscarProyecto();
 			} else {
 				buscarAsignado();
@@ -124,9 +124,9 @@ public class ControladorVista implements ActionListener {
 
 		} else if (panelFormularios.actualizarButton == e.getSource()) {
 			conSQL.conectar();
-			if (crudOption == 1) {
+			if (crudOption == 0) {
 				modificarCientifico();
-			} else if (crudOption == 2) {
+			} else if (crudOption == 1) {
 				modificarProyecto();
 			} else {
 				modificarAsignado();
@@ -148,7 +148,7 @@ public class ControladorVista implements ActionListener {
 			resultSet = st.executeQuery(query);
 			while (resultSet.next()) {
 				data += "<html>DNI: " + resultSet.getString("dni");
-				data += "<br/>NomApels: " + resultSet.getString("nomapels") + "</html>";
+				data += "<br/>NomApels: " + resultSet.getString("nom_apels") + "</html>";
 			}
 			nextImage(cframe.panelContainer);
 			cframe.labelResultados.setText(data);
@@ -165,7 +165,7 @@ public class ControladorVista implements ActionListener {
 			String dni = panelFormularios.textfield2.getText();
 			String nomApels = panelFormularios.textfield1.getText();
 
-			String query = "INSERT INTO cientificos (DNI, nomapels) values" + "('" + dni + "','" + nomApels + "');";
+			String query = "INSERT INTO cientificos (DNI, nom_apels) values" + "('" + dni + "','" + nomApels + "');";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
@@ -182,7 +182,7 @@ public class ControladorVista implements ActionListener {
 		try {
 			String dni = panelFormularios.borrarTexfield1.getText();
 
-			String query = "DELETE FROM cientificos " + "WHERE DNI=" + dni + ";";
+			String query = "DELETE FROM cientificos " + "WHERE DNI='" + dni + "';";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
@@ -201,8 +201,8 @@ public class ControladorVista implements ActionListener {
 			String dni = panelFormularios.textfield6.getText();
 			String nomApels = panelFormularios.textfield5.getText();
 
-			String query = "UPDATE cientificos " + "SET DNI = " + dni + ", nomapels='" + nomApels + "'" + "WHERE DNI = "
-					+ dniActual + ";";
+			String query = "UPDATE cientificos " + "SET DNI = '" + dni + "', nom_apels='" + nomApels + "'" + " WHERE DNI = '"
+					+ dniActual + "';";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
@@ -223,7 +223,7 @@ public class ControladorVista implements ActionListener {
 			resultSet = st.executeQuery(query);
 			while (resultSet.next()) {
 				data += "DNI: " + resultSet.getString("DNI");
-				data += "<br/>NomApels: " + resultSet.getString("nomapels");
+				data += "<br/>NomApels: " + resultSet.getString("nom_apels");
 				data += "<br/>-----------------<br/>";
 			}
 			nextImage(cframe.panelContainer);
@@ -241,12 +241,13 @@ public class ControladorVista implements ActionListener {
 		String nombre = panelFormularios.buscarTextfield1.getText();
 		String data = "";
 		try {
-			String query = "SELECT * FROM proyecto WHERE nombre=" + nombre + ";";
+			String query = "SELECT * FROM proyecto WHERE nombre='" + nombre + "';";
 			Statement st = c.createStatement();
 			java.sql.ResultSet resultSet;
 			resultSet = st.executeQuery(query);
 			while (resultSet.next()) {
-				data += "<html>Nombre: " + resultSet.getString("nombre");
+				data += "<html>Id: " + resultSet.getString("id");
+				data += "<br/>Nombre: " + resultSet.getString("nombre");
 				data += "<br/>Horas: " + resultSet.getString("horas") + "</html>";
 			}
 			nextImage(cframe.panelContainer);
@@ -366,8 +367,8 @@ public class ControladorVista implements ActionListener {
 			String cientifico = panelFormularios.textfield1.getText();
 			String proyecto = panelFormularios.textfield2.getText();
 
-			String query = "INSERT INTO asignado_a (cientifico, proyecto) values" + "('" + cientifico + "','" + proyecto
-					+ "');";
+			String query = "INSERT INTO asignado_a (cientifico, proyecto) values" + "('" + cientifico + "'," + proyecto
+					+ ");";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
@@ -402,8 +403,8 @@ public class ControladorVista implements ActionListener {
 			String nuevoId = panelFormularios.textfield6.getText();
 			String nuevoCientifico = panelFormularios.textfield7.getText();
 
-			String query = "UPDATE asignado_a " + "SET cientifico = '" + nuevoCientifico + "', proyecto='" + nuevoId
-					+ "'" + "WHERE cientifico = '" + cientificoActual + "' AND proyecto='" + idActual + "';";
+			String query = "UPDATE asignado_a " + "SET cientifico = '" + nuevoCientifico + "', proyecto=" + nuevoId
+					 + " WHERE cientifico = '" + cientificoActual + "' AND proyecto=" + idActual + ";";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
@@ -439,16 +440,16 @@ public class ControladorVista implements ActionListener {
 
 	public void changeCrudViews() {
 		switch (panelOpciones.comboBox.getSelectedIndex()) {
-		case 1:
-			crudOption =1;
+		case 0:
+			crudOption =0;
 			showCientificosCrud();
 			break;
-		case 2:
-			crudOption =2;
+		case 1:
+			crudOption =1;
 			showProyectosView();
 			break;
-		case 3:
-			crudOption=3;
+		case 2:
+			crudOption=2;
 			showAsignadoView();
 			break;
 		}
@@ -475,6 +476,8 @@ public class ControladorVista implements ActionListener {
 		panelFormularios.label4.setText("DNI actual: ");
 		panelFormularios.label5.setText("Nombre y apellidos: ");
 		panelFormularios.label6.setText("Nuevo DNI: ");
+		panelFormularios.label6.setVisible(true);
+		panelFormularios.textfield6.setVisible(true);
 		panelFormularios.label7.setVisible(false);
 		panelFormularios.textfield7.setVisible(false);
 	}
@@ -487,12 +490,12 @@ public class ControladorVista implements ActionListener {
 		panelFormularios.textfield3.setVisible(true);
 
 		// BUSCAR
-		panelFormularios.lblBuscar1.setText("ID del proyecto: ");
+		panelFormularios.lblBuscar1.setText("Nombre del proyecto: ");
 		panelFormularios.buscarTextfield2.setVisible(false);
 		panelFormularios.lblBuscar2.setVisible(false);
 
 		// BORRAR
-		panelFormularios.lblBorrar1.setText("ID del proyecto: ");
+		panelFormularios.lblBorrar1.setText("Nombre del proyecto: ");
 		panelFormularios.borrarTexfield2.setVisible(false);
 		panelFormularios.lblBorrar2.setVisible(false);
 
