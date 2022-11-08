@@ -81,55 +81,55 @@ public class ControladorVista implements ActionListener {
 		} else if (panelOpciones.btnListar == e.getSource()) {
 			conSQL.conectar();
 			if (crudOption == 1) {
-				// Algo
+				listarCientificos();
 			} else if (crudOption == 2) {
-				// Otra cosa
+				listarProyectos();
 			} else {
-				// Algo más
+				listarAsignados();
 			}
 			conSQL.closeConnection();
 
 		} else if (panelFormularios.crearButton == e.getSource()) {
 			conSQL.conectar();
 			if (crudOption == 1) {
-				// Algo
+				crearCientifico();
 			} else if (crudOption == 2) {
-				// Otra cosa
+				crearProyecto();
 			} else {
-				// Algo más
+				crearAsignado();
 			}
 			conSQL.closeConnection();
 
 		} else if (panelFormularios.borrarButton == e.getSource()) {
 			conSQL.conectar();
 			if (crudOption == 1) {
-				// Algo
+				borrarCientifico();
 			} else if (crudOption == 2) {
-				// Otra cosa
+				borrarProyecto();
 			} else {
-				// Algo más
+				borrarAsignado();
 			}
 			conSQL.closeConnection();
 
 		} else if (panelFormularios.buscarButton == e.getSource()) {
 			conSQL.conectar();
 			if (crudOption == 1) {
-				// Algo
+				buscarCientifico();
 			} else if (crudOption == 2) {
-				// Otra cosa
+				buscarProyecto();
 			} else {
-				// Algo más
+				buscarAsignado();
 			}
 			conSQL.closeConnection();
 
 		} else if (panelFormularios.actualizarButton == e.getSource()) {
 			conSQL.conectar();
 			if (crudOption == 1) {
-				// Algo
+				modificarCientifico();
 			} else if (crudOption == 2) {
-				// Otra cosa
+				modificarProyecto();
 			} else {
-				// Algo más
+				modificarAsignado();
 			}
 			conSQL.closeConnection();
 		}
@@ -383,7 +383,7 @@ public class ControladorVista implements ActionListener {
 		try {
 			String cientifico = panelFormularios.borrarTexfield1.getText();
 			String proyecto = panelFormularios.borrarTexfield2.getText();
-			String query = "DELETE FROM asignado_a " + "WHERE cientifico=" + cientifico + ";";
+			String query = "DELETE FROM asignado_a " + "WHERE cientifico='" + cientifico + "' AND proyecto= '" +proyecto +"';";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
@@ -440,12 +440,15 @@ public class ControladorVista implements ActionListener {
 	public void changeCrudViews() {
 		switch (panelOpciones.comboBox.getSelectedIndex()) {
 		case 1:
+			crudOption =1;
 			showCientificosCrud();
 			break;
 		case 2:
+			crudOption =2;
 			showProyectosView();
 			break;
 		case 3:
+			crudOption=3;
 			showAsignadoView();
 			break;
 		}
