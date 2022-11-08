@@ -1,5 +1,6 @@
 package controllers;
 
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 //import models.ConexionSQL;
 import views.ClienteFrame;
@@ -17,7 +19,7 @@ public class ControladorVista implements ActionListener {
 	private ClienteFrame cframe;
 	private PanelOpciones panelOpciones;
 	private PanelFormularios panelFormularios;
-	private boolean crudCliente;
+	private int crudOption;
 
 	//private ConexionSQL conSQL = new ConexionSQL();
 
@@ -26,7 +28,7 @@ public class ControladorVista implements ActionListener {
 		this.cframe = cframe;
 		this.panelOpciones = panelOpciones;
 		this.panelFormularios = panelFormularios;
-		crudCliente = true;
+		crudOption = 1;
 		agregarEventos();
 	}
 	
@@ -52,8 +54,93 @@ public class ControladorVista implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+
+		if (panelOpciones.btnBuscar == e.getSource()) {
+			firstImage(cframe.panelContainer);
+			selectCard(cframe.panelFormularios, "buscar");
+
+		} else if (panelOpciones.btnCrear == e.getSource()) {
+			firstImage(cframe.panelContainer);
+			selectCard(cframe.panelFormularios, "crear");
+
+		} else if (panelOpciones.btnEliminar == e.getSource()) {
+			firstImage(cframe.panelContainer);
+			selectCard(cframe.panelFormularios, "borrar");
+
+		} else if (panelOpciones.btnModificar == e.getSource()) {
+			firstImage(cframe.panelContainer);
+			selectCard(cframe.panelFormularios, "actualizar");
+
+		} else if(panelOpciones.btnListar == e.getSource()) {
+			conSQL.conectar();
+			if(crudOption == 1) {
+				//Algo
+			}else if(crudOption == 2){
+				//Otra cosa
+			} else {
+				//Algo más
+			}
+			conSQL.closeConnection();
+			
+		} else if(panelFormularios.crearButton == e.getSource()) {
+			conSQL.conectar();
+			if(crudOption == 1) {
+				//Algo
+			}else if(crudOption == 2){
+				//Otra cosa
+			} else {
+				//Algo más
+			}
+			conSQL.closeConnection();
+			
+		} else if(panelFormularios.borrarButton == e.getSource()) {
+			conSQL.conectar();
+			if(crudOption == 1) {
+				//Algo
+			}else if(crudOption == 2){
+				//Otra cosa
+			} else {
+				//Algo más
+			}
+			conSQL.closeConnection();
+			
+		} else if(panelFormularios.buscarButton == e.getSource()) {
+			conSQL.conectar();
+			if(crudOption == 1) {
+				//Algo
+			}else if(crudOption == 2){
+				//Otra cosa
+			} else {
+				//Algo más
+			}
+			conSQL.closeConnection();
+			
+		} else if(panelFormularios.actualizarButton == e.getSource()) {
+			conSQL.conectar();
+			if(crudOption == 1) {
+				//Algo
+			}else if(crudOption == 2){
+				//Otra cosa
+			} else {
+				//Algo más
+			}
+			conSQL.closeConnection();
+		}
+	}
+	
+	public void selectCard(JPanel container, String carta) {
+		CardLayout cl = (CardLayout) container.getLayout();
+		cl.show(container, carta);
+	}
+
+	public void nextImage(JPanel container) {
+		CardLayout cl = (CardLayout) container.getLayout();
+		cl.next(container);
+	}
+
+	public void firstImage(JPanel container) {
+		CardLayout cl = (CardLayout) container.getLayout();
+		cl.first(container);
 	}
 	
 	//----------------------------METODOS CIENTIFICOS-----------------------------
