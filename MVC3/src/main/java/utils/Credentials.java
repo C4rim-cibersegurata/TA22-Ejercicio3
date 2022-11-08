@@ -8,7 +8,7 @@ public class Credentials {
 
 	public Credentials() {
 		usuario = "remote";
-		password = "Arcangel1999!";
+		password = "549Dijpa$!";
 		ip = "192.168.0.45";
 	}
 
