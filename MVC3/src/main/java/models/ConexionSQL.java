@@ -23,7 +23,7 @@ public class ConexionSQL {
 					credentials.getUsuario(), credentials.getPassword());
 
 			// Indicar la base de datos
-			String querydb = "USE clientesVideo;";
+			String querydb = "USE cientificos;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(querydb);
 

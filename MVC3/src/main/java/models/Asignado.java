@@ -33,12 +33,12 @@ public class Asignado {
 	}
 
 	// M�todo para insertar datos en la tabla
-	public void insertCientificos() {
+	public void insertAsignado() {
 		Connection c = ConexionSQL.connection;
 		try {
-			String query = "INSERT INTO proyecto (id, nombre, horas) values"
-					+ "('12', 'Manhattan', 11304),"
-					+ "('6', 'Dolly', 42);";
+			String query = "INSERT INTO asignado_a (cientifico, proyecto) values"
+					+ "('3245679G', 6),"
+					+ "('3973892V', 12);";
 
 			Statement st = c.createStatement();
 			st.executeUpdate(query);

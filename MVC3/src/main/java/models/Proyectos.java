@@ -29,7 +29,7 @@ public class Proyectos {
 	}
 
 	// M�todo para insertar datos en la tabla
-	public void insertCientificos() {
+	public void insertProyectos() {
 		Connection c = ConexionSQL.connection;
 		try {
 			String query = "INSERT INTO proyecto (id, nombre, horas) values"
