@@ -39,7 +39,7 @@ public class PanelOpciones extends JPanel{
 		comboBox.addItem("Asignado a");
 		add(comboBox);
 		
-		btnCrearCliente = new JButton("Crea");
+		btnCrearCliente = new JButton("Crear");
 		add(btnCrearCliente);
 		
 		btnEliminarCliente = new JButton("Eliminar");
