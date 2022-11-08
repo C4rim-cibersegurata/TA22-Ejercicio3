@@ -35,6 +35,8 @@ public class PanelFormularios extends JPanel {
 	public JLabel lblBorrar1;
 	public JLabel lblBorrar2;
 	public JLabel lblBuscar2;
+	public JLabel label7;
+	public JTextField textfield7;
 	
 
 	public PanelFormularios() {
@@ -65,13 +67,11 @@ public class PanelFormularios extends JPanel {
 		
 		label3 = new JLabel(" Horas: ");
 		label3.setBounds(10, 101, 124, 14);
-		label3.setVisible(false);
 		formularioCrear.add(label3);
 		
 		textfield3 = new JTextField();
 		textfield3.setColumns(10);
 		textfield3.setBounds(10, 115, 124, 20);
-		textfield3.setVisible(false);
 		formularioCrear.add(textfield3);
 		
 		crearButton = new JButton("Crear");
@@ -95,12 +95,10 @@ public class PanelFormularios extends JPanel {
 		buscarTextfield2 = new JTextField();
 		buscarTextfield2.setColumns(10);
 		buscarTextfield2.setBounds(10, 69, 133, 20);
-		buscarTextfield2.setVisible(false);
 		formularioBuscar.add(buscarTextfield2);
 		
 		lblBuscar2 = new JLabel("Id del proyecto: ");
 		lblBuscar2.setBounds(10, 55, 133, 14);
-		lblBuscar2.setVisible(false);
 		formularioBuscar.add(lblBuscar2);
 		
 		buscarButton = new JButton("Buscar");
@@ -148,14 +146,14 @@ public class PanelFormularios extends JPanel {
 		add(formularioActualizar, "actualizar");
 		formularioActualizar.setLayout(null);
 		
+		label4 = new JLabel("DNI actual: ");
+		label4.setBounds(14, 21, 120, 14);
+		formularioActualizar.add(label4);
+
 		textfield4 = new JTextField();
 		textfield4.setColumns(10);
 		textfield4.setBounds(14, 35, 120, 20);
 		formularioActualizar.add(textfield4);
-		
-		label4 = new JLabel("DNI actual: ");
-		label4.setBounds(14, 21, 120, 14);
-		formularioActualizar.add(label4);
 		
 		label5 = new JLabel("Nombre y apellidos: ");
 		label5.setBounds(14, 64, 120, 14);
@@ -166,7 +164,7 @@ public class PanelFormularios extends JPanel {
 		formularioActualizar.add(textfield5);
 		textfield5.setColumns(10);
 		
-		label6 = new JLabel("Horas: ");
+		label6 = new JLabel("Nuevo DNI: ");
 		label6.setBounds(14, 104, 120, 14);
 		label6.setVisible(false);
 		formularioActualizar.add(label6);
@@ -177,8 +175,19 @@ public class PanelFormularios extends JPanel {
 		formularioActualizar.add(textfield6);
 		textfield6.setColumns(10);
 		
+		label7 = new JLabel("Horas: ");
+		label7.setBounds(14, 151, 120, 14);
+		formularioActualizar.add(label7);
+		
+		textfield7 = new JTextField();
+		textfield7.setBounds(14, 165, 120, 20);
+		formularioActualizar.add(textfield7);
+		textfield7.setColumns(10);
+		
 		actualizarButton = new JButton("Actualizar");
 		actualizarButton.setBounds(14, 266, 108, 23);
 		formularioActualizar.add(actualizarButton);
+		
+		
 	}
 }
