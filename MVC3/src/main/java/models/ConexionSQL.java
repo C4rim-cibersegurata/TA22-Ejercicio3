@@ -24,6 +24,7 @@ public class ConexionSQL {
 
 			// Indicar la base de datos
 			String querydb = "USE cientificos;";
+
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(querydb);
 

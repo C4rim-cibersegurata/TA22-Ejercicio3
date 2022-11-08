@@ -65,11 +65,13 @@ public class PanelFormularios extends JPanel {
 		
 		label3 = new JLabel(" Horas: ");
 		label3.setBounds(10, 101, 124, 14);
+		label3.setVisible(false);
 		formularioCrear.add(label3);
 		
 		textfield3 = new JTextField();
 		textfield3.setColumns(10);
 		textfield3.setBounds(10, 115, 124, 20);
+		textfield3.setVisible(false);
 		formularioCrear.add(textfield3);
 		
 		crearButton = new JButton("Crear");
@@ -93,10 +95,12 @@ public class PanelFormularios extends JPanel {
 		buscarTextfield2 = new JTextField();
 		buscarTextfield2.setColumns(10);
 		buscarTextfield2.setBounds(10, 69, 133, 20);
+		buscarTextfield2.setVisible(false);
 		formularioBuscar.add(buscarTextfield2);
 		
 		lblBuscar2 = new JLabel("Id del proyecto: ");
 		lblBuscar2.setBounds(10, 55, 133, 14);
+		lblBuscar2.setVisible(false);
 		formularioBuscar.add(lblBuscar2);
 		
 		buscarButton = new JButton("Buscar");
@@ -125,10 +129,12 @@ public class PanelFormularios extends JPanel {
 		
 		lblBorrar2 = new JLabel("Id del proyecto: ");
 		lblBorrar2.setBounds(10, 56, 130, 14);
+		lblBorrar2.setVisible(false);
 		formularioBorrar.add(lblBorrar2);
 		
 		borrarTexfield2 = new JTextField();
 		borrarTexfield2.setBounds(10, 69, 130, 20);
+		borrarTexfield2.setVisible(false);
 		formularioBorrar.add(borrarTexfield2);
 		borrarTexfield2.setColumns(10);
 		
@@ -162,10 +168,12 @@ public class PanelFormularios extends JPanel {
 		
 		label6 = new JLabel("Horas: ");
 		label6.setBounds(14, 104, 120, 14);
+		label6.setVisible(false);
 		formularioActualizar.add(label6);
 		
 		textfield6 = new JTextField();
 		textfield6.setBounds(14, 120, 120, 20);
+		textfield6.setVisible(false);
 		formularioActualizar.add(textfield6);
 		textfield6.setColumns(10);
 		

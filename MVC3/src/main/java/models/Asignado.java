@@ -39,13 +39,15 @@ public class Asignado {
 			String query = "INSERT INTO asignado_a (cientifico, proyecto) values"
 					+ "('3245679G', 6),"
 					+ "('3973892V', 12);";
-
+			
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
-			System.out.println("Datos insertados con exito!");
+			System.out.println("Tabla creada con éxito!");
+
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
-			System.out.println("Error al insertar datos.");
+			System.out.println("Error creando la tabla.");
 		}
 	}
+
 }
