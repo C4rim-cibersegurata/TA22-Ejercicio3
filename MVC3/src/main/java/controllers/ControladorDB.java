@@ -5,10 +5,10 @@ import models.*;
 public class ControladorDB {
 	private ConexionSQL modelo;
 	private Cientificos c;
-	private Proyecto p;
-	private Asignado_a a;
+	private Proyectos p;
+	private Asignado a;
 
-	public ControladorDB(ConexionSQL modelo, Cientificos c, Proyecto p, Asignado_a a) {
+	public ControladorDB(ConexionSQL modelo, Cientificos c, Proyectos p, Asignado a) {
 		super();
 		this.modelo = modelo;
 		this.c = c;
@@ -22,11 +22,11 @@ public class ControladorDB {
 		modelo.conectar();
 		modelo.crearDB();
 		c.createTable();
-		c.insertClientes();
+		c.insertCientificos();
 		p.createTable();
-		p.insertClientes();
+		p.insertProyectos();
 		a.createTable();
-		a.insertClientes();
+		a.insertAsignado();
 	}
 	
 	

@@ -14,9 +14,15 @@ public class Proyectos {
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
 			// Crear la tabla y su estructura
+<<<<<<< HEAD
 			query = "CREATE TABLE proyecto(" 
 					+ "id CHAR(4) PRIMARY KEY, "
 					+ "nombre NVARCHAR(255), "
+=======
+			query = "CREATE TABLE proyecto (" 
+					+ "id CHAR(4) PRIMARY KEY, "
+					+ "nombre VARCHAR(255), "
+>>>>>>> b7bd84527c732208e91f2a4cf04692fee76c3b6c
 					+ "horas INT "
 					+ ");";
 			st.executeUpdate(query);
@@ -29,7 +35,11 @@ public class Proyectos {
 	}
 
 	// M�todo para insertar datos en la tabla
+<<<<<<< HEAD
 	public void insertCientificos() {
+=======
+	public void insertProyectos() {
+>>>>>>> b7bd84527c732208e91f2a4cf04692fee76c3b6c
 		Connection c = ConexionSQL.connection;
 		try {
 			String query = "INSERT INTO proyecto (id, nombre, horas) values"
