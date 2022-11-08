@@ -332,6 +332,106 @@ public class ControladorVista implements ActionListener {
 			System.out.println("Error al insertar datos.");
 		}
 	}
+	
+	// ---------------------ASIGNADO_A-----------------------------
+		public void buscarAsignado() {
+			Connection c = ConexionSQL.connection;
+			String cientifico = panelFormularios.buscarTextfield.getText();
+			String data = "";
+			try {
+				String query = "SELECT * FROM asignado_a WHERE cientifico=" + cientifico + ";";
+				Statement st = c.createStatement();
+				java.sql.ResultSet resultSet;
+				resultSet = st.executeQuery(query);
+				while (resultSet.next()) {
+					data += "<html>DNI Cientifico: " + resultSet.getString("cientifico");
+					data += "<br/>ID Proyecto: " + resultSet.getString("proyecto") + "</html>";
+				}
+				nextImage(cframe.panelContainer);
+				cframe.labelResultados.setText(data);
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+				System.out.println("Error al insertar datos.");
+			}
+		}
+
+		public void crearAsignado() {
+			// INSERT VALUES
+			Connection c = ConexionSQL.connection;
+			try {
+				String cientifico = panelFormularios.crearNombre.getText();
+				String proyecto = panelFormularios.borrarTexfield.getText();
+
+				String query = "INSERT INTO asignado_a (cientifico, proyecto) values" + "('" + cientifico + "','" + proyecto
+						+ "');";
+				System.out.println(query);
+				Statement st = c.createStatement();
+				st.executeUpdate(query);
+				System.out.println("Datos insertados con exito!");
+			} catch (SQLException | NumberFormatException ex) {
+				System.out.println(ex.getMessage());
+				System.out.println("Error al insertar datos.");
+			}
+		}
+
+		public void borrarAsignado() { // DELETE
+			Connection c = ConexionSQL.connection;
+			try {
+				String cientifico = panelFormularios.borrarTexfield.getText();
+
+				String query = "DELETE FROM asignado_a " + "WHERE cientifico=" + cientifico + ";";
+				System.out.println(query);
+				Statement st = c.createStatement();
+				st.executeUpdate(query);
+				System.out.println("Cliente borrado con exito!");
+			} catch (SQLException | NumberFormatException ex) {
+				System.out.println(ex.getMessage());
+				System.out.println("Error al insertar datos.");
+			}
+		}
+
+		public void modificarAsignado() {
+			Connection c = ConexionSQL.connection;
+			try {
+				String cientificoActual = panelFormularios.dniActual.getText();
+
+				String cientifico = panelFormularios.actualizarNombre.getText();
+				String proyecto = panelFormularios.actualizarApellidos.getText();
+
+				String query = "UPDATE asignado_a " + "SET cientifico = " + cientifico + ", proyecto='" + proyecto + "'"
+						+ "WHERE cientifico = " + cientificoActual + ";";
+				System.out.println(query);
+				Statement st = c.createStatement();
+				st.executeUpdate(query);
+				System.out.println("Datos insertados con exito!");
+			} catch (SQLException | NumberFormatException ex) {
+				System.out.println(ex.getMessage());
+				System.out.println("Error al insertar datos.");
+			}
+		}
+
+		public void listarAsignados() {
+			Connection c = ConexionSQL.connection;
+			String data = "";
+			try {
+				String query = "SELECT * FROM asignado_a;";
+				Statement st = c.createStatement();
+				java.sql.ResultSet resultSet;
+				resultSet = st.executeQuery(query);
+				while (resultSet.next()) {
+					data += "DNI Cientifico: " + resultSet.getString("cientifico");
+					data += "<br/>ID Proyecto: " + resultSet.getString("proyecto");
+					data += "<br/>-----------------<br/>";
+				}
+				nextImage(cframe.panelContainer);
+				cframe.labelResultados.setText("<html>" + data + "</html>");
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+				System.out.println("Error al insertar datos.");
+			}
+		}
+
+		// ----------------CRUDVIEWS---------------------------
 
 	public void changeCrudViews() {
 		switch (panelOpciones.comboBox.getSelectedIndex()) {
