@@ -14,14 +14,14 @@ public class Asignado {
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
 			// Crear la tabla y su estructura
-			query = "CREATE TABLE asignado_a(" 
+			query = "CREATE TABLE asignado_a (" 
 					+ "cientifico VARCHAR(8), "
 					+ "proyecto CHAR(4), "
 					+ "PRIMARY KEY (cientifico,proyecto), "
 					+ "FOREIGN KEY(cientifico) REFERENCES cientificos(DNI) "
 					+ "ON DELETE CASCADE ON UPDATE CASCADE, "
 					+ "FOREIGN KEY(proyecto) REFERENCES proyecto(id) "
-					+ "ON DELETE CASCADE ON UPDATE CASCADE, "
+					+ "ON DELETE CASCADE ON UPDATE CASCADE "
 					+ ");";
 			st.executeUpdate(query);
 			System.out.println("Tabla creada con éxito!");

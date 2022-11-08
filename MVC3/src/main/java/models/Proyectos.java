@@ -14,9 +14,9 @@ public class Proyectos {
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
 			// Crear la tabla y su estructura
-			query = "CREATE TABLE proyecto(" 
+			query = "CREATE TABLE proyecto (" 
 					+ "id CHAR(4) PRIMARY KEY, "
-					+ "nombre NVARCHAR(255), "
+					+ "nombre VARCHAR(255), "
 					+ "horas INT "
 					+ ");";
 			st.executeUpdate(query);
