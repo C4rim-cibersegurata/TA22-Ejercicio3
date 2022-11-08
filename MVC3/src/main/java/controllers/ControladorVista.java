@@ -8,31 +8,45 @@ import java.sql.Statement;
 
 import javax.swing.JFrame;
 
-import models.ConexionSQL;
+//import models.ConexionSQL;
+import views.ClienteFrame;
+import views.PanelFormularios;
+import views.PanelOpciones;
 
 public class ControladorVista implements ActionListener {
-	//Agregar atributos
-	private ConexionSQL conSQL = new ConexionSQL();
-	
-	// Agregar constructor con atributos
+	private ClienteFrame cframe;
+	private PanelOpciones panelOpciones;
+	private PanelFormularios panelFormularios;
+	private boolean crudCliente;
+
+	//private ConexionSQL conSQL = new ConexionSQL();
+
+	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios) {
+		super();
+		this.cframe = cframe;
+		this.panelOpciones = panelOpciones;
+		this.panelFormularios = panelFormularios;
+		crudCliente = true;
+		agregarEventos();
+	}
 	
 	public void iniciarVista() {
-		/*cframe.setTitle("Clientes CRUD");
+		cframe.setTitle("Clientes CRUD");
 		cframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cframe.setBounds(100, 100, 345, 350);
-		cframe.setVisible(true);*/
+		cframe.setVisible(true);
 	}
 	
 	public void agregarEventos() {
-		/*panelOpciones.btnCrearCliente.addActionListener(this);
-		panelOpciones.btnBuscarCliente.addActionListener(this);
-		panelOpciones.btnEliminarCliente.addActionListener(this);
-		panelOpciones.btnListarClientes.addActionListener(this);
-		panelOpciones.btnModificarCliente.addActionListener(this);
+		panelOpciones.btnCrear.addActionListener(this);
+		panelOpciones.btnBuscar.addActionListener(this);
+		panelOpciones.btnEliminar.addActionListener(this);
+		panelOpciones.btnListar.addActionListener(this);
+		panelOpciones.btnModificar.addActionListener(this);
 		panelFormularios.crearButton.addActionListener(this);
 		panelFormularios.buscarButton.addActionListener(this);
 		panelFormularios.borrarButton.addActionListener(this);
-		panelFormularios.actualizarButton.addActionListener(this);*/
+		panelFormularios.actualizarButton.addActionListener(this);
 	}
 	
 	
@@ -43,7 +57,7 @@ public class ControladorVista implements ActionListener {
 	}
 	
 	//----------------------------METODOS CIENTIFICOS-----------------------------
-	public void buscarCientifico() {
+	/*public void buscarCientifico() {
 		Connection c = ConexionSQL.connection;
 		String dni = panelFormularios.buscarTextfield.getText();
 		String data = "";
@@ -140,10 +154,10 @@ public class ControladorVista implements ActionListener {
 			System.out.println(ex.getMessage());
 			System.out.println("Error al insertar datos.");
 		}
-	}
+	}*/
 
 	//----------------------------METODOS PROYECTO-----------------------------
-		public void buscarProyecto() {
+	/*	public void buscarProyecto() {
 			Connection c = ConexionSQL.connection;
 			String nombre = panelFormularios.buscarTextfield.getText();
 			String data = "";
@@ -240,5 +254,5 @@ public class ControladorVista implements ActionListener {
 				System.out.println(ex.getMessage());
 				System.out.println("Error al insertar datos.");
 			}
-		}
+		}*/
 }

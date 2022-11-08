@@ -15,11 +15,11 @@ import java.awt.event.ItemEvent;
 
 public class PanelOpciones extends JPanel{
 	
-	public JButton btnCrearCliente;
-	public JButton btnEliminarCliente;
-	public JButton btnModificarCliente;
-	public JButton btnListarClientes;
-	public JButton btnBuscarCliente;
+	public JButton btnCrear;
+	public JButton btnEliminar;
+	public JButton btnModificar;
+	public JButton btnListar;
+	public JButton btnBuscar;
 	public JComboBox comboBox;
 	
 	
@@ -39,20 +39,20 @@ public class PanelOpciones extends JPanel{
 		comboBox.addItem("Asignado a");
 		add(comboBox);
 		
-		btnCrearCliente = new JButton("Crear");
-		add(btnCrearCliente);
+		btnCrear = new JButton("Crear");
+		add(btnCrear);
 		
-		btnEliminarCliente = new JButton("Eliminar");
-		add(btnEliminarCliente);
+		btnEliminar = new JButton("Eliminar");
+		add(btnEliminar);
 		
-		btnModificarCliente = new JButton("Modificar");
-		add(btnModificarCliente);
+		btnModificar = new JButton("Modificar");
+		add(btnModificar);
 		
-		btnListarClientes = new JButton("Listar");
-		add(btnListarClientes);
+		btnListar = new JButton("Listar");
+		add(btnListar);
 		
-		btnBuscarCliente = new JButton("Buscar");
-		add(btnBuscarCliente);
+		btnBuscar = new JButton("Buscar");
+		add(btnBuscar);
 		
 		
 		
