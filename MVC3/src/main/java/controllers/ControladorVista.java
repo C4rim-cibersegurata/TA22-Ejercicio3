@@ -261,13 +261,13 @@ public class ControladorVista implements ActionListener {
 	public void changeCrudViews() {
 		switch (panelOpciones.comboBox.getSelectedIndex()) {
 		case 1:
-			crudOption = 1;
+			showCientificosCrud();
 			break;
 		case 2:
-			crudOption = 2;
+			showProyectosView();
 			break;
 		case 3:
-			crudOption = 3;
+			showAsignadoView();
 			break;
 		}
 	}
